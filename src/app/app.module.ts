@@ -1,37 +1,37 @@
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from "@angular/router";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from "@angular/router";
-
+import { HomeComponent } from './home/home.component';
+import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
-import { HomeComponent } from './home/home.component';
 import { CitySortDirective } from './app.directive';
-
-// Angular Router configration
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'details/:id', component: WeatherDetailComponent }
-];
-
+import { routing } from './app.routes';
  
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    WeatherDetailComponent,
-    HomeComponent,
-    CitySortDirective,
-  ],
   imports: [
-    RouterModule.forRoot(routes, {useHash: true}),
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    routing,
   ],
-  providers: [AppService],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    CitySortDirective,
+    HomeComponent,
+    WeatherDetailComponent,
+  ],
+  providers: [
+    AppService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 
-export class AppModule { }
+export class AppModule {
+
+}
